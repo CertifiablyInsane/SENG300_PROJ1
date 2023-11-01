@@ -1,4 +1,3 @@
-//test comment
 
 package com.thelocalmarketplace.software.test;
 

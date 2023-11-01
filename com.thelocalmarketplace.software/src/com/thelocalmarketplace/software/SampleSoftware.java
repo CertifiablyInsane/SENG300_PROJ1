@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 //test 1
 
+=======
+>>>>>>> refs/remotes/origin/main
 package com.thelocalmarketplace.software;
 
 import java.math.BigDecimal;
