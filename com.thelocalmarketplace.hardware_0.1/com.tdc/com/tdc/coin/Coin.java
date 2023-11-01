@@ -28,7 +28,7 @@ public class Coin {
 	 * @param value
 	 *            The value of the coin, in multiples of the unit of currency.
 	 * @throws SimulationException
-	 *             If the value is &le;0.
+	 *             If the value is 0.
 	 * @throws SimulationException
 	 *             If the argument is null.
 	 */
