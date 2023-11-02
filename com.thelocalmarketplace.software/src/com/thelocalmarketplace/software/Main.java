@@ -10,5 +10,5 @@ public class Main {
 		// keep track of the active session.
 		SystemManager sysManager = new SystemManager();
 		sysManager.initialize();
-	}
+	} // test comments
 }
