@@ -3,6 +3,7 @@
 // test comment 
 package com.thelocalmarketplace.software;
 
+// This is main!
 public class Main {
 	public static void main(String[] args) {
 		// Create a system Manager and initialize it. 
