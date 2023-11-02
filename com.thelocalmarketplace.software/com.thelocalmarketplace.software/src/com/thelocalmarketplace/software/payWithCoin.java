@@ -1,5 +1,5 @@
 package com.thelocalmarketplace.software;
 
 public class payWithCoin {
-//test wcomment
+//test comment
 }
