@@ -20,7 +20,7 @@ public class SystemManager {
 		this.hardware = hardware;
 		orderManager = new OrderManager();
 		paymentManager = new PaymentManager();
-		weightChecker = new WeightChecker(this.hardware.baggingArea);
+		weightChecker = new WeightChecker(this.hardware.baggingArea, 500f);
 		// Normally, UI would cause this to happen. 
 		// For now, it will be automatic
 		startSession();
