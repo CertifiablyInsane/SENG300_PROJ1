@@ -3,12 +3,11 @@
 // test comment 
 package com.thelocalmarketplace.software;
 
-// This is main!
 public class Main {
+	// Create a system Manager and initialize it. 
+	// This system manager will store all the data and
+	// keep track of the active session.
 	public static void main(String[] args) {
-		// Create a system Manager and initialize it. 
-		// This system manager will store all the data and
-		// keep track of the active session.
 		SystemManager sysManager = new SystemManager();
 		sysManager.initialize();
 	}
