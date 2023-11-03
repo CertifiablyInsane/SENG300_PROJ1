@@ -11,7 +11,7 @@ public class PayWithCoinScratch {
 	    private BigDecimal totalDue;
 	    private float totalPaid;
 
-	    public payWithCoinScratch(BigDecimal totalDue) {
+	    public PayWithCoinScratch(BigDecimal totalDue) {
 	    	
 	        this.totalDue = totalDue;
 	        this.totalPaid = 0;
