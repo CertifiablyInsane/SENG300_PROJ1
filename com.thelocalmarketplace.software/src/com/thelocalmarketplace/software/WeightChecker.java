@@ -20,14 +20,15 @@ public class WeightChecker implements ElectronicScaleListener{
 	public static ScaleStatus status() {return status;}
 
 	private ElectronicScale scale;
-	private BigDecimal LENIENCY = new BigDecimal(500); // Leniency, in Grams
+	private BigDecimal LENIENCY; // Leniency, in Grams
 	
 	// Take keep the supplied scale as a pointer 
 	// and register yourself with that scale.
-	public WeightChecker(ElectronicScale scaleToMonitor) {
+	public WeightChecker(ElectronicScale scaleToMonitor, float leniencyInGrams) {
 		scale = scaleToMonitor;
 		// Register this class as a listener for this scale.
 		scale.register(this);
+		LENIENCY = new BigDecimal(leniencyInGrams);
 	}
 	
 	// If outside the bounds of expectation, shut the system down.
