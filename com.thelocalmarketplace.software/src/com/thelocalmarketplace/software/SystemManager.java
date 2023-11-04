@@ -6,7 +6,7 @@ package com.thelocalmarketplace.software;
 import com.thelocalmarketplace.hardware.*;
 
 public class SystemManager {
-	// Reference to the hardware, providing access to the SelfCheckOutStation. 
+	// Reference to the hardware, providing access to the SelfCheckoutStation. 
 	public SelfCheckoutStation hardware;
 	
 	// AB: All classes can access the hardware if they can access SystemManager

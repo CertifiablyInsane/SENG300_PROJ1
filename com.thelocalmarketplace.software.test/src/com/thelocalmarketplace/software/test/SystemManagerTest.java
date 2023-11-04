@@ -10,6 +10,8 @@ import org.junit.*;
 
 public class SystemManagerTest {
 	
+	// Reference to the hardware, providing access to SelfCheckoutStation.
+	// Reference to the system manager, providing access to SystemManager.
 	private SelfCheckoutStation hardware;
 	private SystemManager systemManager;
 	
