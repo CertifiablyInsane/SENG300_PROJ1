@@ -8,6 +8,10 @@ import com.jjjwelectronics.IDeviceListener;
 import com.jjjwelectronics.Mass;
 import com.jjjwelectronics.scale.*;
 
+import ca.ucalgary.seng300.simulation.InvalidArgumentSimulationException;
+import ca.ucalgary.seng300.simulation.NullPointerSimulationException;
+import ca.ucalgary.seng300.simulation.SimulationException;
+
 public class WeightChecker implements ElectronicScaleListener{
 	public boolean enabled;
 	
@@ -25,6 +29,13 @@ public class WeightChecker implements ElectronicScaleListener{
 	// Take keep the supplied scale as a pointer 
 	// and register yourself with that scale.
 	public WeightChecker(ElectronicScale scaleToMonitor, float leniencyInGrams) {
+		if(scaleToMonitor == null) {
+			throw new NullPointerSimulationException("Scale");
+		}
+		if(leniencyInGrams < 0) {
+			throw new InvalidArgumentSimulationException("Leniency cannot be less than 0");
+		}
+		
 		scale = scaleToMonitor;
 		// Register this class as a listener for this scale.
 		scale.register(this);
@@ -33,6 +44,7 @@ public class WeightChecker implements ElectronicScaleListener{
 	
 	// If outside the bounds of expectation, shut the system down.
 	// Once we're back within these bounds, re-enable the system
+	// This only works if the WeightChecker is enabled.
 	@Override
 	public void theMassOnTheScaleHasChanged(IElectronicScale scale, Mass mass) {
 		if(!enabled) { return; }
@@ -72,6 +84,9 @@ public class WeightChecker implements ElectronicScaleListener{
 	
 	// Set the WeightChecker's status to be the supplied status
 	private static void setStatus(ScaleStatus ss) {
+		if(status == null) {
+			throw new InvalidArgumentSimulationException("Status cannot be null");
+		}
 		// TODO: Add GUI that tells customer the scale is blocked.
 		// TODO: Add GUI that tells the attendant the scale is blocked.
 		status = ss;
