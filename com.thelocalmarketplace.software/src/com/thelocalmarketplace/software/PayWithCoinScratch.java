@@ -4,14 +4,16 @@ import java.math.BigDecimal;
 
 import com.tdc.coin.Coin;
 
+import com.thelocalmarketplace.software.*;
+
 //import com.jjjwelectronics.*;
 
-public class payWithCoinScratch {
+public class PayWithCoinScratch {
 	private BigDecimal totalDue;
 	private float totalPaid;
 	private float totalDueFloat;
 
-	public payWithCoinScratch(BigDecimal totalDue) {
+	public PayWithCoinScratch(BigDecimal totalDue) {
 		PaymentManager newSession = new PaymentManager(totalDue, 0);
 		totalPaid = newSession.getValuePaid();
 		totalDueFloat = newSession.getValueDue();
