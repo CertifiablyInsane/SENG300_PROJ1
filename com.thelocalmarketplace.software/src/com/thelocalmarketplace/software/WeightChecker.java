@@ -24,6 +24,7 @@ public class WeightChecker implements ElectronicScaleListener{
 	public ScaleStatus status() {return status;}
 
 	private ElectronicScale scale;
+	private OrderManager orderManager;
 	private BigDecimal LENIENCY; // Leniency, in Grams
 	
 	// Take keep the supplied scale as a pointer 
@@ -35,11 +36,13 @@ public class WeightChecker implements ElectronicScaleListener{
 		if(leniencyInGrams < 0) {
 			throw new InvalidArgumentSimulationException("Leniency cannot be less than 0");
 		}
-		
 		scale = scaleToMonitor;
 		// Register this class as a listener for this scale.
 		scale.register(this);
 		LENIENCY = new BigDecimal(leniencyInGrams);
+	}
+	public void setOrderManager(OrderManager orderManager) {
+		this.orderManager = orderManager;
 	}
 	
 	// If outside the bounds of expectation, shut the system down.
@@ -48,8 +51,12 @@ public class WeightChecker implements ElectronicScaleListener{
 	@Override
 	public void theMassOnTheScaleHasChanged(IElectronicScale scale, Mass mass) {
 		if(!enabled) { return; }
+		// Set orderManager is not already
+		if(orderManager == null) {
+			throw new NullPointerSimulationException("OrderManager cannot be null.");
+		}
 		
-		Mass expectedMass = new Mass(3e+9);//OrderManager.getExpectedMass();
+		Mass expectedMass = orderManager.expectedMass;
 		BigDecimal upperLimit = expectedMass.inGrams().add(LENIENCY);
 		BigDecimal lowerLimit = expectedMass.inGrams().subtract(LENIENCY);
 		if(status() == ScaleStatus.NORMAL) {

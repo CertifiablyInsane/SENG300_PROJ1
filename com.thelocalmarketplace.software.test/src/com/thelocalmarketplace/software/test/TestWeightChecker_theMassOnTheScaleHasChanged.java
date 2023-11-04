@@ -15,11 +15,14 @@ public class TestWeightChecker_theMassOnTheScaleHasChanged {
 	
 	private WeightChecker wcInstance;
 	private ElectronicScale sampleScale;
+	private OrderManager sampleOrderManager;
 	@Before
 	public void setUp() {
 		sampleScale = new ElectronicScale();
 		wcInstance = new WeightChecker(sampleScale, 500f);
 		sampleScale.register(wcInstance);
+		sampleOrderManager = new OrderManager(wcInstance);
+		wcInstance.setOrderManager(sampleOrderManager);
 	}
 	
 	// TODO: Make order manager's expected weight == 3000.
@@ -27,6 +30,7 @@ public class TestWeightChecker_theMassOnTheScaleHasChanged {
 	@Test
 	public void testWhenNotEnabled() {
 		wcInstance.enabled = false;
+		sampleOrderManager.expectedMass = new Mass(3e+9);
 		// Expected weight is 3000 grams (3e+9 micrograms)
 		wcInstance.setStatus(ScaleStatus.NORMAL);
 		wcInstance.theMassOnTheScaleHasChanged(sampleScale, new Mass(5e+8));
@@ -38,11 +42,18 @@ public class TestWeightChecker_theMassOnTheScaleHasChanged {
 		assertTrue("The Weight Checker had its status changed unexpectedly",
 				wcInstance.status() == ScaleStatus.NORMAL);
 	}
+	@Test(expected = NullPointerSimulationException.class)
+	public void testWhenOrderManagerIsNull() {
+		wcInstance.enabled = true;
+		wcInstance.setOrderManager(null);
+		wcInstance.theMassOnTheScaleHasChanged(sampleScale, new Mass(5e+8));
+	}
 	
 	@Test
 	public void testWhenStatusNormalAndOverBounds() {
 		wcInstance.enabled = true;
 		// Expected weight is 3000 grams (3e+9 micrograms)
+		sampleOrderManager.expectedMass = new Mass(3e+9);
 		wcInstance.setStatus(ScaleStatus.NORMAL);
 		wcInstance.theMassOnTheScaleHasChanged(sampleScale, new Mass(4e+9));
 		
@@ -55,6 +66,7 @@ public class TestWeightChecker_theMassOnTheScaleHasChanged {
 	public void testWhenStatusNormalAndUnderBounds() {
 		wcInstance.enabled = true;
 		// Expected weight is 3000 grams (3e+9 micrograms)
+		sampleOrderManager.expectedMass = new Mass(3e+9);
 		wcInstance.setStatus(ScaleStatus.NORMAL);
 		wcInstance.theMassOnTheScaleHasChanged(sampleScale, new Mass(2e+9));
 		
@@ -67,6 +79,7 @@ public class TestWeightChecker_theMassOnTheScaleHasChanged {
 	public void testWhenStatusNormalAndInBounds() {
 		wcInstance.enabled = true;
 		// Expected weight is 3000 grams (3e+9 micrograms)
+		sampleOrderManager.expectedMass = new Mass(3e+9);
 		wcInstance.setStatus(ScaleStatus.NORMAL);
 		wcInstance.theMassOnTheScaleHasChanged(sampleScale, new Mass(3e+9));
 		
@@ -80,6 +93,7 @@ public class TestWeightChecker_theMassOnTheScaleHasChanged {
 	public void testWhenStatusBlockedAndOverBounds() {
 		wcInstance.enabled = true;
 		// Expected weight is 3000 grams (3e+9 micrograms)
+		sampleOrderManager.expectedMass = new Mass(3e+9);
 		wcInstance.setStatus(ScaleStatus.BLOCKED);
 		wcInstance.theMassOnTheScaleHasChanged(sampleScale, new Mass(4e+9));
 		
@@ -92,6 +106,7 @@ public class TestWeightChecker_theMassOnTheScaleHasChanged {
 	public void testWhenStatusBlockedAndUnderBounds() {
 		wcInstance.enabled = true;
 		// Expected weight is 3000 grams (3e+9 micrograms)
+		sampleOrderManager.expectedMass = new Mass(3e+9);
 		wcInstance.setStatus(ScaleStatus.BLOCKED);
 		wcInstance.theMassOnTheScaleHasChanged(sampleScale, new Mass(4e+9));
 		
@@ -103,6 +118,7 @@ public class TestWeightChecker_theMassOnTheScaleHasChanged {
 	public void testWhenStatusBlockedAndInBounds() {
 		wcInstance.enabled = true;
 		// Expected weight is 3000 grams (3e+9 micrograms)
+		sampleOrderManager.expectedMass = new Mass(3e+9);
 		wcInstance.setStatus(ScaleStatus.BLOCKED);
 		wcInstance.theMassOnTheScaleHasChanged(sampleScale, new Mass(3e+9));
 		
