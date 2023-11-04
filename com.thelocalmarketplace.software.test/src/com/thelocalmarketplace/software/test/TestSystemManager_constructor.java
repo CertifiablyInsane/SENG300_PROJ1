@@ -1,3 +1,6 @@
+// Author: Camila Hernandez, UCID 30134911
+//
+//
 package com.thelocalmarketplace.software.test;
 
 import static org.junit.Assert.*;
