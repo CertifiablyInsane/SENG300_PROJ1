@@ -5,8 +5,6 @@ package com.thelocalmarketplace.software;
 
 import com.thelocalmarketplace.hardware.*;
 
-import ca.ucalgary.seng300.simulation.NullPointerSimulationException;
-
 public class SystemManager {
 	// Reference to the hardware, providing access to the SelfCheckoutStation. 
 	public SelfCheckoutStation hardware;
@@ -21,9 +19,6 @@ public class SystemManager {
 	
 	// Constructor for the SystemManager, initializes hardware and software components.
 	public SystemManager(SelfCheckoutStation hardware) {
-		if (hardware == null) {
-			throw new NullPointerSimulationException("The hardware is not properly initialized.");
-		}
 		this.hardware = hardware;
 		orderManager = new OrderManager();
 		paymentManager = new PaymentManager();
