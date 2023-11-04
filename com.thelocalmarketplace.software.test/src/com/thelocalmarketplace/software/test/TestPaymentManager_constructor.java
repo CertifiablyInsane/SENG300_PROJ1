@@ -50,7 +50,7 @@ public class TestPaymentManager_constructor {
 		throw new InvalidArgumentSimulationException("Negative initial amount paid is not allowed.");
 	}
 
-	// Test when the amound paid is null
+	// Test when the amount paid is null
 	@Test(expected = NullPointerSimulationException.class)
 	public void testAmountPaidNull() {
 		float nullFloat = (Float) null;
