@@ -66,6 +66,16 @@ public class WeightChecker implements ElectronicScaleListener{
 				setStatus(ScaleStatus.NORMAL);
 			}	
 		}
+		else {
+			// AB: THIS SHOULD NEVER HAPPEN!!
+			// In order to reach this point, status needs to be null. 
+			// However, setStatus makes it so status can never be null.
+			// If this happens, then something has gone terribly wrong.
+			
+			// In fact, the level of impossibility of this scenario makes
+			// it so I can't even simulate this happening for a test case.
+			throw new NullPointerSimulationException("This should never happen!");
+		}
 	}
 	
 	// AB: I acknowledge that onAttendantOverride and onDoNotBagRequest are the
