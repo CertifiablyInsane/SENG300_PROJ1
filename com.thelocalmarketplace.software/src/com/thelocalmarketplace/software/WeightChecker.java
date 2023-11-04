@@ -20,14 +20,19 @@ public class WeightChecker implements ElectronicScaleListener{
 	public static ScaleStatus status() {return status;}
 
 	private ElectronicScale scale;
-	private BigDecimal LENIENCY = new BigDecimal(500); // Leniency, in Grams
+	private BigDecimal LENIENCY; // Leniency, in Grams
 	
-	public WeightChecker(ElectronicScale scaleToMonitor) {
+	// Take keep the supplied scale as a pointer 
+	// and register yourself with that scale.
+	public WeightChecker(ElectronicScale scaleToMonitor, float leniencyInGrams) {
 		scale = scaleToMonitor;
 		// Register this class as a listener for this scale.
 		scale.register(this);
+		LENIENCY = new BigDecimal(leniencyInGrams);
 	}
 	
+	// If outside the bounds of expectation, shut the system down.
+	// Once we're back within these bounds, re-enable the system
 	@Override
 	public void theMassOnTheScaleHasChanged(IElectronicScale scale, Mass mass) {
 		if(!enabled) { return; }
@@ -64,6 +69,8 @@ public class WeightChecker implements ElectronicScaleListener{
 	public void onDoNotBagRequest() {
 		setStatus(ScaleStatus.NORMAL);
 	}
+	
+	// Set the WeightChecker's status to be the supplied status
 	private static void setStatus(ScaleStatus ss) {
 		// TODO: Add GUI that tells customer the scale is blocked.
 		// TODO: Add GUI that tells the attendant the scale is blocked.
