@@ -28,9 +28,7 @@ public class TestPaymentManager_constructor {
 
 	@Test(expected = InvalidArgumentSimulationException.class)
 	public void testWhenLeniencyIsLessThanZero() {
-		BigDecimal testNegative;
-		
-		testNegative = testNegative.negate();
+		BigDecimal testNegative = BigDecimal.valueOf(-1);
 		testPayManager = new PaymentManager(testNegative, ZERO_PAID);
 	}
 }
