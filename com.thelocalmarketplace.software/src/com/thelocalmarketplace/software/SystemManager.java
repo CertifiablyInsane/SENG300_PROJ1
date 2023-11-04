@@ -1,9 +1,12 @@
 // Authors: André Beaulieu, UCID 30174544
 // 			Camila Hernandez, UCID 30134911
-
+//
+//
 package com.thelocalmarketplace.software;
 
 import com.thelocalmarketplace.hardware.*;
+
+import ca.ucalgary.seng300.simulation.NullPointerSimulationException;
 
 public class SystemManager {
 	// Reference to the hardware, providing access to the SelfCheckoutStation. 
@@ -19,10 +22,13 @@ public class SystemManager {
 	
 	// Constructor for the SystemManager, initializes hardware and software components.
 	public SystemManager(SelfCheckoutStation hardware) {
+		if (hardware == null) {
+			throw new NullPointerSimulationException("The hardware is not properly initialized.");
+		}
 		this.hardware = hardware;
-		orderManager = new OrderManager();
 		paymentManager = new PaymentManager();
 		weightChecker = new WeightChecker(this.hardware.baggingArea, 500f);
+		orderManager = new OrderManager(weightChecker);
 		// Normally, user interface would trigger this process. 
 		// However, in this project iteration, it is set to occur automatically.
 		startSession();
