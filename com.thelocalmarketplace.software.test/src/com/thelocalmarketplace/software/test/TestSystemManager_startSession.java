@@ -8,7 +8,7 @@ import com.thelocalmarketplace.software.SystemManager;
 import static org.junit.Assert.*;
 import org.junit.*;
 
-public class SystemManagerTest {
+public class TestSystemManager_startSession {
 	
 	// Reference to the hardware, providing access to SelfCheckoutStation.
 	// Reference to the system manager, providing access to SystemManager.
