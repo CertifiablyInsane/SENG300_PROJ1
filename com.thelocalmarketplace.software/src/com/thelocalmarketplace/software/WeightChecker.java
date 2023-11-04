@@ -8,6 +8,10 @@ import com.jjjwelectronics.IDeviceListener;
 import com.jjjwelectronics.Mass;
 import com.jjjwelectronics.scale.*;
 
+import ca.ucalgary.seng300.simulation.InvalidArgumentSimulationException;
+import ca.ucalgary.seng300.simulation.NullPointerSimulationException;
+import ca.ucalgary.seng300.simulation.SimulationException;
+
 public class WeightChecker implements ElectronicScaleListener{
 	public boolean enabled;
 	
@@ -16,8 +20,8 @@ public class WeightChecker implements ElectronicScaleListener{
 	// if(WeightChecker.status() == ScaleStatus.BLOCKED){
 	// 		// Do something...
 	//	}
-	private static ScaleStatus status = ScaleStatus.NORMAL;
-	public static ScaleStatus status() {return status;}
+	private ScaleStatus status = ScaleStatus.NORMAL;
+	public ScaleStatus status() {return status;}
 
 	private ElectronicScale scale;
 	private BigDecimal LENIENCY; // Leniency, in Grams
@@ -25,6 +29,13 @@ public class WeightChecker implements ElectronicScaleListener{
 	// Take keep the supplied scale as a pointer 
 	// and register yourself with that scale.
 	public WeightChecker(ElectronicScale scaleToMonitor, float leniencyInGrams) {
+		if(scaleToMonitor == null) {
+			throw new NullPointerSimulationException("Scale");
+		}
+		if(leniencyInGrams < 0) {
+			throw new InvalidArgumentSimulationException("Leniency cannot be less than 0");
+		}
+		
 		scale = scaleToMonitor;
 		// Register this class as a listener for this scale.
 		scale.register(this);
@@ -33,11 +44,12 @@ public class WeightChecker implements ElectronicScaleListener{
 	
 	// If outside the bounds of expectation, shut the system down.
 	// Once we're back within these bounds, re-enable the system
+	// This only works if the WeightChecker is enabled.
 	@Override
 	public void theMassOnTheScaleHasChanged(IElectronicScale scale, Mass mass) {
 		if(!enabled) { return; }
 		
-		Mass expectedMass = new Mass(0);//OrderManager.getExpectedMass();
+		Mass expectedMass = new Mass(3e+9);//OrderManager.getExpectedMass();
 		BigDecimal upperLimit = expectedMass.inGrams().add(LENIENCY);
 		BigDecimal lowerLimit = expectedMass.inGrams().subtract(LENIENCY);
 		if(status() == ScaleStatus.NORMAL) {
@@ -71,7 +83,11 @@ public class WeightChecker implements ElectronicScaleListener{
 	}
 	
 	// Set the WeightChecker's status to be the supplied status
-	private static void setStatus(ScaleStatus ss) {
+	// Throws an exception is the supplied status is null
+	public void setStatus(ScaleStatus ss) {
+		if(ss == null) {
+			throw new InvalidArgumentSimulationException("Status cannot be null");
+		}
 		// TODO: Add GUI that tells customer the scale is blocked.
 		// TODO: Add GUI that tells the attendant the scale is blocked.
 		status = ss;
