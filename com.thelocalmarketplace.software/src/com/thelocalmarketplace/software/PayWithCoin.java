@@ -58,4 +58,3 @@ public class PayWithCoin {
         return changeDue;
     }
 }
-﻿
