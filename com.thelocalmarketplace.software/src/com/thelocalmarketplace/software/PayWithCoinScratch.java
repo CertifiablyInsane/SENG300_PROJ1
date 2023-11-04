@@ -14,9 +14,9 @@ public class PayWithCoinScratch {
 	private float totalDueFloat;
 
 	public PayWithCoinScratch(BigDecimal totalDue) {
-		PaymentManager newSession = new PaymentManager(totalDue, 0);
-		totalPaid = newSession.getValuePaid();
-		totalDueFloat = newSession.getValueDue();
+		PaymentManager newCoinSession = new PaymentManager(totalDue, 0);
+		totalPaid = newCoinSession.getValuePaid();
+		totalDueFloat = newCoinSession.getValueDue();
 	}
 
 	public void insertCoin(Coin testCoin) {
@@ -32,5 +32,9 @@ public class PayWithCoinScratch {
 	// Get the remaining amount due
 	public float getAmountDue() {
 		return totalDueFloat - totalPaid;
+	}
+
+	public float dispenseChange() {
+		return totalPaid - totalDueFloat;
 	}
 }
