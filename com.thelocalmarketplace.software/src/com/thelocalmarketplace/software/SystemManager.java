@@ -1,6 +1,7 @@
 // Authors: André Beaulieu, UCID 30174544
 // 			Camila Hernandez, UCID 30134911
-
+//
+//
 package com.thelocalmarketplace.software;
 
 import com.thelocalmarketplace.hardware.*;
