@@ -13,27 +13,17 @@ public class PaymentManager {
     private float amountDueFloat;
     private float amountPaid;
 
-    public PaymentManager(BigDecimal amountDue, Float amountPaid) {
+    public PaymentManager(BigDecimal amountDue, float amountPaid) {
         System.out.println("PaymentManager has been created");
         amountDueFloat = amountDue.floatValue();
         this.amountPaid = amountPaid;
     }
-   
+
     public float getValueDue() {
         return amountDueFloat;
     }
 
     public float getValuePaid() {
         return amountPaid;
-    }
-    
-    public boolean isPaymentComplete() {
-    	boolean paymentComplete;
-    	
-    	if (amountDueFloat - amountPaid <= 0) {
-    		paymentComplete = true;
-    	}
-    	
-    	return paymentComplete;
     }
 }
