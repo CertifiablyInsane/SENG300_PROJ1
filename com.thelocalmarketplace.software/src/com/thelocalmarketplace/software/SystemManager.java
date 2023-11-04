@@ -13,9 +13,9 @@ public class SystemManager {
 	// Alternatively, classes should have a hardware reference built into
 	// their constructor. (For instance, WeightChecker does this)
 	
-	private OrderManager orderManager;
-	private PaymentManager paymentManager;
-	private WeightChecker weightChecker;
+	public OrderManager orderManager;
+	public PaymentManager paymentManager;
+	public WeightChecker weightChecker;
 	
 	// Constructor for the SystemManager, initializes hardware and software components.
 	public SystemManager(SelfCheckoutStation hardware) {
