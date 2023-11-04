@@ -20,8 +20,8 @@ public class WeightChecker implements ElectronicScaleListener{
 	// if(WeightChecker.status() == ScaleStatus.BLOCKED){
 	// 		// Do something...
 	//	}
-	private static ScaleStatus status = ScaleStatus.NORMAL;
-	public static ScaleStatus status() {return status;}
+	private ScaleStatus status = ScaleStatus.NORMAL;
+	public ScaleStatus status() {return status;}
 
 	private ElectronicScale scale;
 	private BigDecimal LENIENCY; // Leniency, in Grams
@@ -49,7 +49,7 @@ public class WeightChecker implements ElectronicScaleListener{
 	public void theMassOnTheScaleHasChanged(IElectronicScale scale, Mass mass) {
 		if(!enabled) { return; }
 		
-		Mass expectedMass = new Mass(0);//OrderManager.getExpectedMass();
+		Mass expectedMass = new Mass(3e+9);//OrderManager.getExpectedMass();
 		BigDecimal upperLimit = expectedMass.inGrams().add(LENIENCY);
 		BigDecimal lowerLimit = expectedMass.inGrams().subtract(LENIENCY);
 		if(status() == ScaleStatus.NORMAL) {
@@ -83,8 +83,9 @@ public class WeightChecker implements ElectronicScaleListener{
 	}
 	
 	// Set the WeightChecker's status to be the supplied status
-	private static void setStatus(ScaleStatus ss) {
-		if(status == null) {
+	// Throws an exception is the supplied status is null
+	public void setStatus(ScaleStatus ss) {
+		if(ss == null) {
 			throw new InvalidArgumentSimulationException("Status cannot be null");
 		}
 		// TODO: Add GUI that tells customer the scale is blocked.
