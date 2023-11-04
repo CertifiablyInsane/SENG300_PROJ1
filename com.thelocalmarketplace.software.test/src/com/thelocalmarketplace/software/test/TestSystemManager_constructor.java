@@ -24,30 +24,42 @@ public class TestSystemManager_constructor {
 		hardware = new SelfCheckoutStation();
 	}
 	
+	// Test method to verify that the hardware is not null
 	@Test
 	public void testConstructorWithValidHardware() {
 		systemManager = new SystemManager(hardware); 
 		assertNotNull(systemManager);
 	}
 	
+	// Test method to verify that the NullPointerSimulationException is thrown when hardware is null
 	@Test (expected = NullPointerSimulationException.class)
 	public void testConstructorWithNullHardware() {
 		hardware = null;
 		systemManager = new SystemManager(hardware);
 	}
 	
+	// Test method to verify that the hardware is properly initialized when hardware is not null
+	@Test
+	public void testHardwareInitialization() {
+		systemManager = new SystemManager(hardware); 
+		assertEquals(hardware, systemManager.hardware);
+	}
+	
+	// Test method to verify that the OrderManager is properly initialized when hardware is not null
 	@Test
 	public void testOrderManagerInitialization() {
 		systemManager = new SystemManager(hardware);
 		assertNotNull(systemManager.orderManager);
 	}
 	
+	// Test method to verify that the PaymentManager is properly initialized when hardware is not null
 	@Test
 	public void testPaymentManagerInitialization() {
 		systemManager = new SystemManager(hardware);
 		assertNotNull(systemManager.paymentManager);
 	}
 	
+	// Test method to verify that the WeightChecker is properly initialized when hardware is not null
 	@Test
 	public void testWeightCheckerInitialization() {
 		systemManager = new SystemManager(hardware);
