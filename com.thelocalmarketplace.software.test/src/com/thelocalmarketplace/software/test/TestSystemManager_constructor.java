@@ -36,5 +36,22 @@ public class TestSystemManager_constructor {
 		systemManager = new SystemManager(hardware);
 	}
 	
+	@Test
+	public void testOrderManagerInitialization() {
+		systemManager = new SystemManager(hardware);
+		assertNotNull(systemManager.orderManager);
+	}
+	
+	@Test
+	public void testPaymentManagerInitialization() {
+		systemManager = new SystemManager(hardware);
+		assertNotNull(systemManager.paymentManager);
+	}
+	
+	@Test
+	public void testWeightCheckerInitialization() {
+		systemManager = new SystemManager(hardware);
+		assertNotNull(systemManager.weightChecker);
+	}
 	
 }
