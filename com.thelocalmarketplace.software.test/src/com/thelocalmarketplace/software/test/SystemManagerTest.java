@@ -25,4 +25,12 @@ public class SystemManagerTest {
         assertTrue(systemManager.weightChecker.enabled);
 	}
 	
+	@Test
+	public void testStartSessionMultipleTimes() {
+		systemManager.startSession();
+		systemManager.startSession();
+		assertTrue(systemManager.orderManager.enabled);
+        assertTrue(systemManager.paymentManager.enabled);
+        assertTrue(systemManager.weightChecker.enabled);
+	}
 }
