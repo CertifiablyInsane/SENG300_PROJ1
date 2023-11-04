@@ -1,3 +1,5 @@
+// Jiaqi Wu 30172397 + Amira Wishah 30182579 PayWithCoin class
+
 package com.thelocalmarketplace.software;
 
 import java.math.BigDecimal;
