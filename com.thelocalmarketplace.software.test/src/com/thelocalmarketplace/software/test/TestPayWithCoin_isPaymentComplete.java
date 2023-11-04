@@ -1,5 +1,5 @@
 package com.thelocalmarketplace.software.test;
 
-public class PayWithCoinTest {
+public class TestPayWithCoin_isPaymentComplete {
 
 }
