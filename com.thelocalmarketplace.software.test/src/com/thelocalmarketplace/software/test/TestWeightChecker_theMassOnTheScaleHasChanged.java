@@ -14,6 +14,7 @@ import com.jjjwelectronics.scale.*;
 public class TestWeightChecker_theMassOnTheScaleHasChanged {
 	
 	private WeightChecker wcInstance;
+	private PaymentManager pmInstance;
 	private ElectronicScale sampleScale;
 	private OrderManager sampleOrderManager;
 	private PaymentManager pmInstance;
