@@ -20,7 +20,6 @@ public class PaymentManager {
 		amountDueFloat = amountDueParam.floatValue() + this.amountDueFloat;
 		this.amountPaid = amountPaidParam + this.amountPaid;
 		if (enabled == false)
-
 		{
 			amountDueFloat = 0;
 			amountPaid = 0;

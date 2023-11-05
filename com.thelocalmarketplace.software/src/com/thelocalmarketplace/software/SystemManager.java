@@ -28,7 +28,7 @@ public class SystemManager {
 		this.hardware = hardware;
 		paymentManager = new PaymentManager();
 		weightChecker = new WeightChecker(this.hardware.baggingArea, 500f);
-		orderManager = new OrderManager(weightChecker);
+		orderManager = new OrderManager(weightChecker, paymentManager);
 		// Further initialization if needed
 		weightChecker.setOrderManager(orderManager);
 		// Normally, user interface would trigger this process. 
