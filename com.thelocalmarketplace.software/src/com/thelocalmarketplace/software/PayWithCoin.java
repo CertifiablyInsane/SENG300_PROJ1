@@ -26,4 +26,5 @@ public class PayWithCoin {
 		float coinTempValue = testCoin.getValue().floatValue();
 		paymentManager.amountPaid += coinTempValue;
 	}
+	
 }

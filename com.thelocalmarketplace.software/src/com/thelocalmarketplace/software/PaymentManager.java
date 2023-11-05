@@ -2,19 +2,18 @@
 
 package com.thelocalmarketplace.software;
 
-import java.math.BigDecimal;
-
 import com.tdc.coin.Coin;
 
 // AB: Jiaqi and Amira, I created this class as the manager that will
 // Divert different kinds of payment. Just needed to be able to reference
 // a class. Thanks.
 public class PaymentManager {
-	public boolean enabled;
+    public boolean enabled;
 
 	public float amountDue = 0;
 	public float amountPaid = 0;
 	private PayWithCoin payWithCoin;
+
 
 	// initialize payment manager - JW
 	public PaymentManager() {
@@ -31,3 +30,4 @@ public class PaymentManager {
 	}
 
 }
+

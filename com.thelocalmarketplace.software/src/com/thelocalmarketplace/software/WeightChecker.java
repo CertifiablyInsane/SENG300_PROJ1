@@ -125,5 +125,5 @@ public class WeightChecker implements ElectronicScaleListener{
 	public void aDeviceHasBeenTurnedOn(IDevice<? extends IDeviceListener> device) {}
 	@Override
 	public void aDeviceHasBeenTurnedOff(IDevice<? extends IDeviceListener> device) {}
-
+ 
 }
