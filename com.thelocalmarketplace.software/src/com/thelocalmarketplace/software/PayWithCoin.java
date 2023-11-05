@@ -15,11 +15,14 @@ public class PayWithCoin {
 
 	public PayWithCoin(PaymentManager newPM) {
 
+		// the PayWithCoin creates a new instance of PaymentManager, from the one
+		// specified in the constructor- JW
 		paymentManager = newPM;
 
 	}
 
 	public void insertCoin(Coin testCoin) {
+		// adds the value of the coin to the amount paid JW
 		float coinTempValue = testCoin.getValue().floatValue();
 		paymentManager.amountPaid += coinTempValue;
 	}
