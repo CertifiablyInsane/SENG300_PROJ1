@@ -12,26 +12,20 @@ import com.tdc.coin.Coin;
 public class PaymentManager {
 	public boolean enabled;
 
-	private float amountDueFloat = 0;
-	private float amountPaid = 0;
+	public float amountDue = 0;
+	public float amountPaid = 0;
+	private PayWithCoin payWithCoin;
 
-	public PaymentManager(BigDecimal amountDueParam, float amountPaidParam) {
-		System.out.println("PaymentManager has been created");
-		amountDueFloat = amountDueParam.floatValue() + this.amountDueFloat;
-		this.amountPaid = amountPaidParam + this.amountPaid;
-		if (enabled == false)
-		{
-			amountDueFloat = 0;
-			amountPaid = 0;
+	public PaymentManager() {
+		System.out.println("Payment Manager has been created");
+		payWithCoin = new PayWithCoin(this);
+	}
+
+	public void addPayment(Coin newCoin) {
+		payWithCoin.insertCoin(newCoin);
+		if (amountPaid >= amountDue) {
+			// implement print receipt here
 		}
-	}
-
-	public float getValueDue() {
-		return amountDueFloat - this.amountPaid;
-	}
-
-	public float getValuePaid() {
-		return amountPaid;
 	}
 
 }
