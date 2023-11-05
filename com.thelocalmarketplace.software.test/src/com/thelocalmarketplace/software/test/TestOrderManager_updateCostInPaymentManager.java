@@ -8,6 +8,8 @@ import org.junit.Test;
 import com.thelocalmarketplace.software.OrderManager;
 import com.thelocalmarketplace.software.PaymentManager;
 
+import ca.ucalgary.seng300.simulation.InvalidArgumentSimulationException;
+
 public class TestOrderManager_updateCostInPaymentManager {
 	OrderManager tomInstance;
 	PaymentManager pmInstance;
@@ -15,7 +17,7 @@ public class TestOrderManager_updateCostInPaymentManager {
 	
 	//checks that the cost is updated accurately according the to item price
 	@Test
-	public void CheckCostIsUpdatedAccuratelyWhenPriceIs25() {
+	public void checkCostIsUpdatedAccuratelyWhenPriceIs25() {
 		float testItemCost = 25;
 		tomInstance.updateCostInPaymentManager(testItemCost);
 		
@@ -25,7 +27,7 @@ public class TestOrderManager_updateCostInPaymentManager {
 		assertEquals(expected, actual, 0);
 	}
 	
-	public void CheckCostIsUpdatedAccuratelyWhenPriceZero() {
+	public void checkCostIsUpdatedAccuratelyWhenPriceZero() {
 		float testItemCost = 0;
 		tomInstance.updateCostInPaymentManager(testItemCost);
 		
@@ -34,11 +36,19 @@ public class TestOrderManager_updateCostInPaymentManager {
 		
 		assertEquals(expected, actual, 0);
 	}
-	// Should this throw an exception? or is it valid for when doing a refund
-	public void CheckCostIsUpdatedAccuratelyWhenPriceIsNegativeTwo() {
+	
+	@Test (expected =  InvalidArgumentSimulationException.class)
+	public void checkCostIsUpdatedAccuratelyWhenPriceIsNegativeTwo() {
 		float testItemCost = -2;
+		tomInstance.updateCostInPaymentManager(testItemCost);
+		throw new InvalidArgumentSimulationException("negative value item is not allowed.");
+	}
+	
+	@Test
+	public void checkForNullItem(){
 		
 	}
+	
 }
 
 /**public void updateCostInPaymentManager(float itemCost) {
