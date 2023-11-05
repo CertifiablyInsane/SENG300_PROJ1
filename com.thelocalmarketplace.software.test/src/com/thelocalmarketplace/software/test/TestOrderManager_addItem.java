@@ -12,10 +12,10 @@ import com.thelocalmarketplace.software.WeightChecker;
 
 public class TestOrderManager_addItem {
 	
-	public boolean enabled; // Used to check whether the hardware is enabled
+	public boolean enabled; 
 	
 	private OrderManager omInstance; 
-	private WeightChecker weightChecker; //
+	private WeightChecker weightChecker; 
 	private PaymentManager paymentManager;
 	private ItemAdderBarcode itemAdderBarcode;
 	
