@@ -22,7 +22,7 @@ public class PayWithCoin {
 	}
 
 	public void insertCoin(Coin testCoin) {
-		// adds the value of the coin to the amount paid
+		// adds the value of the coin to the amount paid JW
 		float coinTempValue = testCoin.getValue().floatValue();
 		paymentManager.amountPaid += coinTempValue;
 	}
