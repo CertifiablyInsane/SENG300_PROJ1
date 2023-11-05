@@ -17,6 +17,7 @@ public class TestWeightChecker_theMassOnTheScaleHasChanged {
 	private PaymentManager pmInstance;
 	private ElectronicScale sampleScale;
 	private OrderManager sampleOrderManager;
+	private PaymentManager pmInstance;
 	@Before
 	public void setUp() {
 		sampleScale = new ElectronicScale();
