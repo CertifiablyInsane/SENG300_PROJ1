@@ -14,11 +14,8 @@ public class PaymentManager {
 	public float amountPaid = 0;
 	private PayWithCoin payWithCoin;
 
-<<<<<<< HEAD
 
-=======
 	// initialize payment manager - JW
->>>>>>> refs/remotes/origin/main
 	public PaymentManager() {
 		System.out.println("Payment Manager has been created");
 		payWithCoin = new PayWithCoin(this);
