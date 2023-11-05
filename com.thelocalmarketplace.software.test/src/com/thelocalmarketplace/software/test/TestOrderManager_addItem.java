@@ -32,7 +32,6 @@ public class TestOrderManager_addItem {
 	private PaymentManager pmInstance;
 	private ItemAdderBarcode sampleItemAdderBarcode;
 	
-<<<<<<< HEAD
 	@Before
 	public void setup()
 	{
@@ -87,7 +86,5 @@ public class TestOrderManager_addItem {
 		PLUCodedItem testPLUItem = new PLUCodedItem(new PriceLookUpCode("Code"), new Mass(0));
 		omInstance.addItem(testPLUItem);
 	}
-=======
 
->>>>>>> refs/remotes/origin/main
 }
