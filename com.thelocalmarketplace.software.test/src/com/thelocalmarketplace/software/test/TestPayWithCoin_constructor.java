@@ -30,5 +30,6 @@ public class TestPayWithCoin_constructor {
 		public void testConstructorWithNullHardware() {
 			pmInstance = null;
 			pwcInstance = new PayWithCoin(pmInstance);
+			throw new NullPointerSimulationException() ;
 	}
 }

@@ -9,6 +9,7 @@ import com.thelocalmarketplace.software.OrderManager;
 import com.thelocalmarketplace.software.PaymentManager;
 
 import ca.ucalgary.seng300.simulation.InvalidArgumentSimulationException;
+import ca.ucalgary.seng300.simulation.NullPointerSimulationException;
 
 public class TestOrderManager_updateCostInPaymentManager {
 	OrderManager tomInstance;
@@ -27,6 +28,21 @@ public class TestOrderManager_updateCostInPaymentManager {
 		assertEquals(expected, actual, 0);
 	}
 	
+	// checks that cost is updated properly when adding on to a positive non-zero amount due
+	@Test
+	public void checkCostIsUpdatedAccuratelyWhenPriceIs25AndAmountDueIsAlready5() {
+		float testItemCost = 25;
+		
+		pmInstance.amountDue = 5;
+		tomInstance.updateCostInPaymentManager(testItemCost);
+		
+		float expected = testItemCost;
+		float actual = pmInstance.amountDue ;
+		
+		assertEquals(expected, actual, 0);
+	}
+	
+	// checks that cost is updated accurately when price of item is zero
 	public void checkCostIsUpdatedAccuratelyWhenPriceZero() {
 		float testItemCost = 0;
 		tomInstance.updateCostInPaymentManager(testItemCost);
@@ -37,21 +53,12 @@ public class TestOrderManager_updateCostInPaymentManager {
 		assertEquals(expected, actual, 0);
 	}
 	
+	// Checks for an invalid, negative item cost
 	@Test (expected =  InvalidArgumentSimulationException.class)
 	public void checkCostIsUpdatedAccuratelyWhenPriceIsNegativeTwo() {
 		float testItemCost = -2;
 		tomInstance.updateCostInPaymentManager(testItemCost);
 		throw new InvalidArgumentSimulationException("negative value item is not allowed.");
-	}
-	
-	@Test
-	public void checkForNullItem(){
-		
-	}
+	}	
 	
 }
-
-/**public void updateCostInPaymentManager(float itemCost) {
-paymentManager.amountDue += itemCost;
-}
-}**/
