@@ -1,4 +1,7 @@
 // Jiaqi Wu 30172397
+// Test for PaymentManager
+
+// Since PaymentManager has no parameters in the construction, there is only one test case.
 
 package com.thelocalmarketplace.software.test;
 
@@ -13,24 +16,15 @@ import ca.ucalgary.seng300.simulation.*;
 
 import com.jjjwelectronics.scale.*;
 
-//package com.thelocalmarketplace.software.test;
-
 // This class tests the payment manager class constructor.
 
 public class TestPaymentManager_constructor {
-	private PaymentManager testPayManager;
-	private float ZERO_PAID = 0;
 
-	@Test(expected = NullPointerSimulationException.class)
-	public void testWhenCoinNull() {
-		testPayManager = new PaymentManager(null, ZERO_PAID);
+	// Test for initialize manager
+	@Test //(expected = InvalidArgumentSimulationException.class)
+	public void testWhenPaymentIsInitialized() {
+		PaymentManager testPayManager = new PaymentManager();
+		System.out.println("Payment manager is initialized.");
 	}
 
-	@Test(expected = InvalidArgumentSimulationException.class)
-	public void testWhenLeniencyIsLessThanZero() {
-		BigDecimal testNegative;
-		
-		testNegative = testNegative.negate();
-		testPayManager = new PaymentManager(testNegative, ZERO_PAID);
-	}
 }
