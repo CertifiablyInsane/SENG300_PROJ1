@@ -78,6 +78,7 @@ public class OrderManager {
 	}
 
 	// SC: Not yet implemented in the first iteration:
+	// This is not tested as it is not implemented in this iteration.
 	public void removeItem(Product item) {
 		throw new UnsupportedOperationException();
 	}
