@@ -69,7 +69,7 @@ public class TestPayWithCoin_insertCoin {
 		}
 	
 		
-	// test that the coin value gets recorded accurately with a valid coin of value 0
+	// test that the coin value gets recorded accurately with a coin of value 0
 		@Test 
 		public void testCountingInsertValueProperlyWhenInsertValueIsZero() {
 			
@@ -113,8 +113,5 @@ public class TestPayWithCoin_insertCoin {
 			
 			assertEquals(expected, actual, 0);
 		}
-	
-} /**public void insertCoin(Coin testCoin) {
-	float coinTempValue = testCoin.getValue().floatValue();
-	paymentManager.amountPaid += coinTempValue; **/
+} 
 
