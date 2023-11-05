@@ -1,4 +1,5 @@
-// Author: Subeg Singh Chahal | UCID: 30196531
+// Authors: Subeg Singh Chahal | UCID: 30196531
+//			Camila Hernandez, UCID 30134911
 package com.thelocalmarketplace.software.test;
 
 import org.junit.*;
