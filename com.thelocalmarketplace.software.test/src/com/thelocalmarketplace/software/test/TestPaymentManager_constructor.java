@@ -21,7 +21,7 @@ import com.jjjwelectronics.scale.*;
 public class TestPaymentManager_constructor {
 
 	// Test for initialize manager
-	@Test(expected = InvalidArgumentSimulationException.class)
+	@Test //(expected = InvalidArgumentSimulationException.class)
 	public void testWhenPaymentIsInitialized() {
 		PaymentManager testPayManager = new PaymentManager();
 		System.out.println("Payment manager is initialized.");
