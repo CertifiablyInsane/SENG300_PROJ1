@@ -18,7 +18,7 @@ public class OrderManager {
 	// The following are instance variables, class variables, and objects that are
 	// declared for use later in this class:
 	public boolean enabled; // Used to check whether the hardware is enabled
-	private boolean readyForNewItem = true; // Used to block the self-checkout station when it is ready to add items
+	public boolean readyForNewItem = true; // Used to block the self-checkout station when it is ready to add items
 	public Mass expectedMass = new Mass(0); // Stores the updated mass used in the WeightChecker class when items are
 											// added/removed
 	public ArrayList<Item> items = new ArrayList<>(); // Holds the specific items that get added to the bagging area
