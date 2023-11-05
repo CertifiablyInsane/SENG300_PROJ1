@@ -1,4 +1,7 @@
 // Jiaqi Wu 30172397
+// Test for PaymentManager
+
+// Since PaymentManager has no parameters in the construction, there is only one test case.
 
 package com.thelocalmarketplace.software.test;
 
@@ -21,7 +24,7 @@ public class TestPaymentManager_constructor {
 	@Test(expected = InvalidArgumentSimulationException.class)
 	public void testWhenPaymentIsInitialized() {
 		PaymentManager testPayManager = new PaymentManager();
-		System.out.println("Payment manager is initialized");
+		System.out.println("Payment manager is initialized.");
 	}
 
 }
