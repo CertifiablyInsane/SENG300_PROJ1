@@ -16,12 +16,13 @@ public class TestWeightChecker_theMassOnTheScaleHasChanged {
 	private WeightChecker wcInstance;
 	private ElectronicScale sampleScale;
 	private OrderManager sampleOrderManager;
+	private PaymentManager pmInstance;
 	@Before
 	public void setUp() {
 		sampleScale = new ElectronicScale();
 		wcInstance = new WeightChecker(sampleScale, 500f);
 		sampleScale.register(wcInstance);
-		sampleOrderManager = new OrderManager(wcInstance);
+		sampleOrderManager = new OrderManager(wcInstance, pmInstance);
 		wcInstance.setOrderManager(sampleOrderManager);
 	}
 	

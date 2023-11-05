@@ -19,11 +19,5 @@ public class TestOrderManager_addItem {
 	private PaymentManager paymentManager;
 	private ItemAdderBarcode itemAdderBarcode;
 	
-	@Before
-	public void setUp()
-	{
-		
-	}
-	
-	@Test()
+
 }
