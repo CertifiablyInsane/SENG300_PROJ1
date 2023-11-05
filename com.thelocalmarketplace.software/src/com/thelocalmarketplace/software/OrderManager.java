@@ -22,9 +22,9 @@ public class OrderManager {
 	public Mass expectedMass = new Mass(0); // Stores the updated mass used in the WeightChecker class when items are
 											// added/removed
 	public ArrayList<Item> items = new ArrayList<>(); // Holds the specific items that get added to the bagging area
-	private WeightChecker weightChecker; // Stores instance of weightChecker
-	private PaymentManager paymentManager; // Stores instance of paymentManager
-	private ItemAdderBarcode itemAdderBarcode; // Stores instance of itemAdderBarcode
+	public WeightChecker weightChecker; // Stores instance of weightChecker
+	public PaymentManager paymentManager; // Stores instance of paymentManager
+	public ItemAdderBarcode itemAdderBarcode; // Stores instance of itemAdderBarcode
 
 	// The constructor for OrderManager sets all objects needed to be accessed by the OrderManager class
 	// to appropriate instance variables, as select methods/variables from these classes will be used later 
