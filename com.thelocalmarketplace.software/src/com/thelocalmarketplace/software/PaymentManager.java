@@ -13,6 +13,7 @@ public class PaymentManager {
     public boolean enabled;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private float amountDueFloat;
     private float amountPaid;
 
@@ -33,19 +34,25 @@ public class PaymentManager {
 =======
 	private float amountDueFloat = 0;
 	private float amountPaid = 0;
+=======
+	public float amountDue = 0;
+	public float amountPaid = 0;
+	private PayWithCoin payWithCoin;
+>>>>>>> refs/remotes/origin/main
 
-	public PaymentManager(BigDecimal amountDueParam, float amountPaidParam) {
-		System.out.println("PaymentManager has been created");
-		amountDueFloat = amountDueParam.floatValue() + this.amountDueFloat;
-		this.amountPaid = amountPaidParam + this.amountPaid;
-		if (enabled == false)
+	public PaymentManager() {
+		System.out.println("Payment Manager has been created");
+		payWithCoin = new PayWithCoin(this);
+	}
 
-		{
-			amountDueFloat = 0;
-			amountPaid = 0;
+	public void addPayment(Coin newCoin) {
+		payWithCoin.insertCoin(newCoin);
+		if (amountPaid >= amountDue) {
+			// implement print receipt here
 		}
 	}
 
+<<<<<<< HEAD
 	public float getValueDue() {
 		return amountDueFloat - this.amountPaid;
 	}
@@ -54,5 +61,8 @@ public class PaymentManager {
 		return amountPaid;
 	}
 
+}
+>>>>>>> refs/remotes/origin/main
+=======
 }
 >>>>>>> refs/remotes/origin/main
