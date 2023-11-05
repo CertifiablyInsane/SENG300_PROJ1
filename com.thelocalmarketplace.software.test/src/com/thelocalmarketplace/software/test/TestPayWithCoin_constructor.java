@@ -9,6 +9,9 @@ import org.junit.Test;
 
 import com.thelocalmarketplace.software.PayWithCoin;
 import com.thelocalmarketplace.software.PaymentManager;
+import com.thelocalmarketplace.software.SystemManager;
+
+import ca.ucalgary.seng300.simulation.NullPointerSimulationException;
 
 public class TestPayWithCoin_constructor {
 	private PayWithCoin pwcInstance;
@@ -20,5 +23,12 @@ public class TestPayWithCoin_constructor {
 	public void testInitializeIsNotNull(){
 		pwcInstance = new PayWithCoin(pmInstance);
 		assertNotNull(pwcInstance);	//checks that initialization goes through and the parameter passed is not null 
+	}
+	
+	// Test method to verify that the NullPointerSimulationException is thrown when payment manager instance is null
+		@Test (expected = NullPointerSimulationException.class)
+		public void testConstructorWithNullHardware() {
+			pmInstance = null;
+			pwcInstance = new PayWithCoin(pmInstance);
 	}
 }

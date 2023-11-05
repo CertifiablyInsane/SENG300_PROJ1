@@ -1,12 +1,11 @@
 // Amira Wishah UCID: 301282579
-
 package com.thelocalmarketplace.software.test;
 
 import static org.junit.Assert.assertEquals;
-import org.junit.Test;
 
 import java.math.BigDecimal;
 
+import org.junit.Test;
 
 import com.tdc.coin.Coin;
 import com.thelocalmarketplace.software.PayWithCoin;
@@ -15,9 +14,10 @@ import com.thelocalmarketplace.software.PaymentManager;
 import ca.ucalgary.seng300.simulation.InvalidArgumentSimulationException;
 import ca.ucalgary.seng300.simulation.NullPointerSimulationException;
 
-public class TestPayWithCoin_insertCoin {
+public class TestPayWithCoin_insertCoin2 {
 	PayWithCoin pwcInstance;
 	PaymentManager pmInstance;
+	
 
 	
 	// Test when value of coin is 0
@@ -114,4 +114,5 @@ public class TestPayWithCoin_insertCoin {
 			assertEquals(expected, actual, 0);
 		}
 } 
+
 
