@@ -11,7 +11,5 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/com.thelocalmarketplace.software"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/com.thelocalmarketplace.software.test"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
